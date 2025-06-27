@@ -13,11 +13,13 @@ class RemoteArticleBloc extends Bloc<RemoteArticleEvent, RemoteArticleState>{
 
   void onGetArticles(GetArticles event, Emitter<RemoteArticleState> emit)async{
     final state = await _getArticlesUseCase(null);
-    
+    print('Bloc received state: $state');
     if(state is DataSuccess && state.data!.isNotEmpty){
+      print('Bloc: DataSuccess, articles count: ${state.data!.length}');
       emit(RemoteArticlesDone(articles: state.data));
     }
     if(state is DataFailed){
+      print('Bloc: DataFailed, error: ${state.error}');
       emit(RemoteArticlesError(error: state.error));
     }
   }

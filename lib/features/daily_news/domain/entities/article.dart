@@ -1,15 +1,14 @@
-import 'dart:ffi';
 
 import 'package:equatable/equatable.dart';
 
 class ArticleEntity extends Equatable {
-  final Int? id;
+  final int? id;
   final String? author;
   final String? title;
   final String? description;
   final String? url;
   final String? urlToImage;
-  final String? publisheadAt;
+  final String? publishedAt;
   final String? content;
 
   const ArticleEntity({
@@ -19,7 +18,7 @@ class ArticleEntity extends Equatable {
     this.description,
     this.url,
     this.urlToImage,
-    this.publisheadAt,
+    this.publishedAt,
     this.content,
   });
 
@@ -31,7 +30,7 @@ class ArticleEntity extends Equatable {
     description,
     url,
     urlToImage,
-    publisheadAt,
+    publishedAt,
     content,
   ];
 }

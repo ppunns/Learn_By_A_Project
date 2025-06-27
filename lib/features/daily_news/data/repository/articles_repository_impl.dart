@@ -17,9 +17,11 @@ class ArticlesRepositoryImpl extends ArticleRepository {
     try {
       final HttpResponse = await _newsApiService.getNewsArticles(
           NewsApiKey,
-          contryQuery,
+          countryQuery,
           categoryQuery,
         );
+        print('API Response status: ${HttpResponse.response.statusCode}');
+    print('API Response data: ${HttpResponse.data}');
       if(HttpResponse.response.statusCode == HttpStatus.ok){
         return DataSuccess(HttpResponse.data);
       }else{
@@ -33,6 +35,7 @@ class ArticlesRepositoryImpl extends ArticleRepository {
         );
       }
     } on DioError catch (e){
+      print('API Error: ${e.message}');
       return DataFailed(e);
     }
   }
